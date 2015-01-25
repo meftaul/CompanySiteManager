@@ -1,0 +1,133 @@
+{% extends "en_base.html" %}
+{% load staticfiles %}
+
+
+{% load staticfiles %}
+
+
+{% block content%}
+<div class="container">
+    <!-- Test change -->
+	<div id="img-fix" class="col-lg-9 col-md-offset-2">
+            <div class="bs-example">
+                <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                            {% for image in slider_images %}
+                            <div id="image_{{image.id}}" class="item">
+                                <img src="{{image.image.url}}">
+                                <h2>{{image.label}}</h2>
+                                <div class="carousel-caption">
+                                    <h3>{{image.label}}</h3>
+                                    <p>{{image.description}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                    </div>
+                    <!-- Carousel nav -->
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+		</div>
+        </div>       
+<!-- Page Content -->
+        <div class="container col-centered">
+            <div class="row">
+                <div class="col-lg-9 col-md-offset-2"><h2>Know About Us</h2><hr></div>
+            </div>
+            <div class="container">
+		<div class="row">
+                    <div class="col-sm-3 col-md-3 col-md-offset-2">
+                        <img class="img-circle img-responsive" src="{{static_images.0.home_who_we_are.url}}">
+                        <h3>{{static_text.0.heading}}</h3>
+                        <p>{{static_text.0.text | truncatewords:"30"}}</p>
+                        <p><a href="{% url 'about' %}" class="btn btn-default">View Detail &raquo;</a></p>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <img class="img-circle img-responsive" src="{{static_images.0.home_our_advantages.url}}">
+                        <h3>{{static_text.1.heading}}</h3>
+                        <p>
+                            <li>{{static_text.1.text | truncatewords:"30"}}</li>
+                        </p>
+                        <p><a href="{% url 'advantage' %}" class="btn btn-default dropdown-toggle">View Detail &raquo;</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="row">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title" style="color: #fff; font-size: 24px;">{{static_text.2.heading}}</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <ul id="box-ul">                                    
+                                        {{static_text.2.text}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title" style="color: #fff; font-size: 24px;">Contact With Us</h2>
+                                </div>
+                                <div id="box-txt" class="panel-body" style="background-color=#aaa;">
+                                    <p>WE ARE HERE TO HELP YOU DRIVE CHANGE TOGETHER WE WILL SHAPE THE FUTURE.</p>
+                                    <span>Tel: </span>
+                                    <p><span>000-000-000 </span></p>
+                                    <span>Mail: </span>
+                                    <p><span> 3Spire@gmail.com </span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+    
+                    <div class="clearfix hidden-md hidden-lg"></div>
+                </div>
+	    </div>
+            
+            <div class="row">
+                <div class="col-lg-9 col-md-offset-2"><h2>News And Publication</h2></h2><hr></div>
+            </div>
+            
+            <div class="news">
+                <div class="row">
+                    <div class="col-sm-1 col-md-offset-2">
+                        <img src="http://54.169.98.111/3SpireBeta/public/images/AEC-Responsive-Screen-Mockup-Pack.jpg" class="img-thumbnail img-responsive">
+                    </div>
+                    
+                    <div class="col-sm-8">
+                    </div>
+                    
+                    <div class="col-sm-1 col-md-offset-2">
+                    </div>
+                    <div class="col-sm-8">
+                        <span>Launching Web Site</span>
+                    </div>
+                    
+                    <div class="col-sm-1 col-md-offset-2">
+                    </div>
+                    <div class="col-sm-8">
+                        <p style="text-align: justify;">Starten von Web-Site</p>
+                    </div>
+                    
+                    <div class="col-sm-1 col-md-offset-2">
+                    </div>
+                    
+                    <div class="col-sm-8">
+                    </div>
+                </div>
+            </div>
+</div>
+{% endblock %}

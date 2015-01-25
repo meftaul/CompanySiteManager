@@ -1,0 +1,26 @@
+{% extends "en_base.html" %}
+{% load staticfiles %}
+
+
+{% load staticfiles %}
+
+
+{% block content%}
+{% if static_text %}
+    <div class="container padded">
+        <div class="row">
+            <div class="col-lg-9 col-md-offset-2"><h2>{{static_text.1.heading}}</h2><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9 col-md-offset-2">	    		
+                <p>{{static_text.1.text}}</p>				
+                <div class="clearfix hidden-md hidden-lg"></div>
+            </div>			
+	</div>
+    </div>
+
+{% else %}
+    Database is empty now
+{% endif %}
+
+{% endblock %}

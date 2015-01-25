@@ -1,0 +1,152 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{company.0.name}} | English Lnaguage</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+        <!-- Bootstrap -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>   
+        <link rel="stylesheet" media="screen" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" media="screen" type="text/css" href="{% static "css/custom.css" %}">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="{% static "js/html5shiv.js" %}"></script>
+	<script src="{% static "js/respond.min.js" %}"></script>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    </head>    
+    <body>
+    	<!-- Navigation -->
+        <nav class="navbar-inverse navbar-fixed-top" role="navigation"><!-- navbar -->
+            <div class="container">
+                <div class="row">
+                    <div id="top-bar-fix" class="col-lg-9 col-md-offset-2">
+                        <div class="pull-left">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div><a href="{% url 'home' %}"><img src="{{company.0.logo.url}}" class="navbar-image" height="50" alt="3Spire"></a></div>
+                        </div>
+                            <div class="pull-right">
+                                <ul class="nav navbar-nav">
+                                    <!--<li><a href="http://54.169.98.111/3SpireBeta/public">Home</a></li>-->
+                                    <li><a href="{% url 'clients' %}">Client</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+					    {% for service in services %}
+                                            <li><a href="{% url 'service' service.id %}">{{service.name}}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            {% for link in social_links %}
+                                            <li><a href="{{link.link}}">{{link.site_name}}</a></li>
+                                            {% endfor %}
+                                            <!--<li><a href="http://54.169.98.111/3SpireBeta/public/blog">Blog</a></li>-->
+                                        </ul>
+                                    </li>
+				    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                </ul>
+                                <!--<div class="pull-right"><a data-toggle="modal" href="#myModal" class="btn btn-default btn-sm">Log in</a></div>-->
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+	</div>
+ <!-- End Navigation -->    	
+	{% block content%}
+	
+	{% endblock%}
+    	<!-- Footer Area -->     
+	<div class="ftr">
+	    <div class="container">
+		<div class="row">
+		    <footer class="col-lg-9 col-md-offset-2">
+			<div class="pull-left">                    
+			    <p>
+				<a href="{% url 'home' %}">
+				    <img src="{% static "images/uk.png" %}" name="eng" class="language" heigh="20" width="20" alt="flag">
+				</a>
+				<a href="{% url 'ger_home' %}">
+				    <img src="{% static "images/germany.png" %}" name="eng" class="language" heigh="20" width="20" alt="flag">
+				</a>
+			    </p>
+			</div>
+			<div class="pull-right">
+			    <p>&copy; 3Spire. 2014</p>
+			</div>
+		    </footer>
+		</div>
+	    </div>    
+	</div>    
+	<!-- End Footer -->
+    
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->        
+        <script src="{% static "js/jQuery.js" %}"></script>
+
+        <script src="{% static "js/progressbar.js" %}"></script>
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->       
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+        <script>
+	    $( document ).ready(function() {
+		$('#image_1').addClass('active');										
+	    });
+			
+            $(function (){            	
+                $('.carousel').carousel({
+                    interval: 4000
+                });                                
+            })
+			
+	    $( document ).ready(function() {
+		    var minHight = $(document).height();										
+	    });
+	    
+	    // Window load event used just in case window height is dependant upon images
+	    $(window).bind("load", function() {
+		
+		var footerHeight = 0,
+			footerTop = 0,
+			$footer = $(".ftr");
+			
+		positionFooter();
+		
+		function positionFooter() {
+		    footerHeight = $footer.height();
+		    footerTop = ($(window).scrollTop()+215-footerHeight)+"px";
+
+		    if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+			   $footer.css({
+				position: "absolute"
+			   }).animate({
+				//top: footerTop
+			   })
+		   } else {
+			$footer.css({
+			    position: "static"
+			})
+		   }
+		}	       
+	    });
+
+        </script>
+    </body>
+</html>

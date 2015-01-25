@@ -1,0 +1,28 @@
+{% extends "ger_base.html" %}
+{% load staticfiles %}
+
+
+{% load staticfiles %}
+
+
+{% block content%}
+    
+    {% if service %}
+    
+    <div class="container padded">
+	<div class="row">
+	    <div class="col-lg-9 col-md-offset-2"><h2>{{service.name}}</h2><hr></div>
+	</div>
+	<div class="row">
+	    <div class="col-lg-9 col-md-offset-2">	    		
+	    <p>{{service.description}}</p>				
+		<div class="clearfix hidden-md hidden-lg"></div>
+	    </div>			
+	</div>
+    </div>
+    
+    {% else %}
+	No service available
+    {% endif %}
+
+{% endblock %}

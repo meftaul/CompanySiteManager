@@ -1,0 +1,27 @@
+{% extends "ger_base.html" %}
+{% load staticfiles %}
+
+
+{% load staticfiles %}
+
+
+{% block content%}
+{% if member %}
+    <div class="container padded">
+        <div class="row">
+            <div class="col-lg-9 col-md-offset-2"><h2>{{member.name}},{{member.designation}}</h2><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-md-offset-2">
+                <img src="{{member.image.url}}" class="img-circle img-thumbnail img-responsive" alt="{{member.name}}">
+            </div>
+            <div class="col-sm-6 col-md-6">
+                   <p id="member-description"><p>{{member.description}}</p></p>
+            </div>
+        </div>
+    </div>
+{% else %}
+    No members available
+{% endif %}
+
+{% endblock %}

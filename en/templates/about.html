@@ -1,0 +1,47 @@
+{% extends "en_base.html" %}
+{% load staticfiles %}
+
+
+{% block content%}
+    
+
+    <div class="container padded">
+        <div class="row">
+            <div class="col-lg-9 col-md-offset-2"><h2>{{static_text.0.heading}}</h2><hr></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-9 col-md-offset-2">	    		
+                <p>{{static_text.0.text}}</p>				
+                
+                <div class="clearfix hidden-md hidden-lg"></div>
+            </div>			
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-lg-9 col-md-offset-2"><h2>Our Team</h2><hr></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+            </div>
+            {% if members_list %}
+                {% for member in members_list %}
+                <div class="col-sm-4 col-md-4">
+                    <img src="{{member.image.url}}" class="img-circle img-thumbnail img-responsive" alt="2015-01-18-21:50:57-man-placeholder.jpg">
+                    <h3 id="member_name"><a href="{% url 'detail' member.id %}">{{member.name}},{{member.designation}}</a></h3>
+                </div>
+                {% endfor %}
+            {% else %}
+                No members available
+            {% endif %}
+           
+            <div class="clearfix hidden-md hidden-lg"></div>
+        </div>
+        
+    </div>
+
+
+
+{% endblock %}
